@@ -7,12 +7,12 @@ hadditApp.config([
     $stateProvider
       .state('home', {
         url: '/home',
-        templateUrl: '/js/templates/home.html',
+        templateUrl: '/javascripts/templates/home.html',
         controller: 'MainCtrl'
       })
       .state('posts', {
         url: '/posts/{id}',
-        templateUrl: '/js/templates/posts.html',
+        templateUrl: '/javascripts/templates/posts.html',
         controller: 'PostsCtrl'
       });
 
