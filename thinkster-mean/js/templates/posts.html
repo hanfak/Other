@@ -20,7 +20,7 @@
 
 
 <h2>Comments so far...</h2>
-<p>Number of comments {{<post class="comments length"></post> }}</p>
+<p>Number of comments {{post.comments.length}}</p>
 <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
   <span class="glyphicon glyphicon-thumbs-up"
     ng-click="incrementUpvotes(comment)"></span>
@@ -29,3 +29,5 @@
 
   <span> {{comment.body}} </span>
 </div>
+
+<a href="/#/">Back to list of posts</a>

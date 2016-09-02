@@ -4,12 +4,6 @@
     <a href="{{post.link}}" ng-show="post.link">
       {{post.title}}
     </a>
-    <!-- Get index of post from factory data -->
-    <!-- Stay the same -->
-    <p>{{findIndexOfPost(post)}}</p>
-    <!-- Get index of post from sorted array by angular of posts -->
-    <!-- Changes if upvotes comparsion change -->
-    <p>{{$index}}</p>
 
     <span ng-hide="post.link"> {{post.title}} </span>
 

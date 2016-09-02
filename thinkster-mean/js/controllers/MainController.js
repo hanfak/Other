@@ -25,8 +25,5 @@ hadditApp.controller('MainCtrl' ,
         post.upvotes++;
       };
 
-      $scope.findIndexOfPost = function(post) {
-        return $scope.posts.indexOf(post);
-      };
     }
 ]);
