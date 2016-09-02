@@ -14,7 +14,12 @@ app.controller('MainCtrl' ,
       ];
 
       $scope.addPost = function() {
-        $scope.posts.push({title: 'new post', upvotes: 10});
+        // Prevent user from adding blank title
+        if(!$scope.title || $scope.title === '') { return; }
+
+        $scope.posts.push({title: $scope.title, upvotes: parseInt($scope.upvote)});
+        $scope.title = '';
+        $scope.upvote = '';
       };
     }
 ]);
