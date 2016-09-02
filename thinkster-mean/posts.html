@@ -1,4 +1,16 @@
-{{test}}
+<form ng-submit="addComment()">
+  <h3>Add a new comment</h3>
+
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Comment"
+    ng-model="body"  autofocus></input>
+  </div>
+
+  <button type="submit" class="btn btn-primary">
+    POST COMMENT
+  </button>
+</form>
+
 <div>
   <h3>
     <a ng-show="post.link" href="{{post.link}}"> {{post.title}} </a>
@@ -6,11 +18,13 @@
   </h3>
 </div>
 
+<h2>Comments so far...</h2>
+
 <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-    <span class="glyphicon glyphicon-thumbs-up"
-      ng-click="incrementUpvotes(comment)"></span>
-    {{comment.upvotes}} - by {{comment.author}}
-    <span >
-      {{comment.body}}
-    </span>
-  </div>
+  <span class="glyphicon glyphicon-thumbs-up"
+    ng-click="incrementUpvotes(comment)"></span>
+
+  {{comment.upvotes}} - by {{comment.author}}
+
+  <span> {{comment.body}} </span>
+</div>
