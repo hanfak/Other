@@ -14,11 +14,11 @@ app.controller('MainCtrl' ,
       ];
 
       $scope.addPost = function() {
-        // Prevent user from adding blank title
         if(!$scope.title || $scope.title === '') { return; }
-
-        $scope.posts.push({title: $scope.title, upvotes: 2});
+        //Although posts does not have link ref, method will create new object with it
+        $scope.posts.push({title: $scope.title, link: $scope.link , upvotes: 2});
         $scope.title = '';
+        $scope.link = '';
       };
 
       $scope.incrementUpvotes = function(post) {
