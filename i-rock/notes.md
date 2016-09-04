@@ -37,4 +37,6 @@ Pass features test
   - Create for for an achievement in new.html.erb
     - define @achievement in controller, as a new Achievement (new record in db)
     - need to create model for achievement
-  - 
+  - Create model for Achievement
+    - use feature test, the fields in the form to build model
+    - 
