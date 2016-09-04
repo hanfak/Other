@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'create new achievement' do
   scenario 'create new achievement with date' do
     visit('/')
-    click_on('New achievement')
+    click_on('New Achievement')
 
     fill_in('Title', with: 'Read a book')
     fill_in('Description', with: 'Excellent read')

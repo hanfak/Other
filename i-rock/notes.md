@@ -30,5 +30,8 @@ Pass features test
   - Create routes
     -   resources :achievement, only: [:new, :create]
     - only routes for stuff we need
-    - Create controller for achievements
-      - create new action
+  - Create controller for achievements
+    - create new action\
+  - Create template for new
+    - Now expects to find fields of form to fill in
+  - 

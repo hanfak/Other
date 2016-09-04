@@ -1,4 +1,4 @@
-class AcheivementsController < ApplicationController
+class AchievementsController < ApplicationController
   def new
   end
 end
