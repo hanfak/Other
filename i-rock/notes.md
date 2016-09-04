@@ -9,3 +9,4 @@ To pass test
   Setup view
     - ceate view that is being referenced by index actions
       - file in views/welcome/index.html.erb
+  Pass test, by filling in view
