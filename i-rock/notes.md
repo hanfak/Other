@@ -39,4 +39,7 @@ Pass features test
     - need to create model for achievement
   - Create model for Achievement
     - use feature test, the fields in the form to build model
-    - 
+    - use rails g model achievement title description:text privacy:integer featured:boolean cover_image
+    - rake db:migrate
+  - Use simple form (not really for pass test)
+    - rails g simple_form:install --bootstrap
