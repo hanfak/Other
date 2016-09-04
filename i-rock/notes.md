@@ -6,3 +6,6 @@ To pass test
   Setup controller
     - create controller file
     - create action which is being asked for at the route (index)
+  Setup view
+    - ceate view that is being referenced by index actions
+      - file in views/welcome/index.html.erb
