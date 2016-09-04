@@ -23,3 +23,7 @@ First feature test
     - create neew feature file
 
 Pass features test
+  - create link button , in view
+    - create in layout template
+    - use bootstrap template and edit
+    - Add link using new_achievement_path
