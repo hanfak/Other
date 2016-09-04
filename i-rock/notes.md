@@ -10,3 +10,8 @@ To pass test
     - ceate view that is being referenced by index actions
       - file in views/welcome/index.html.erb
   Pass test, by filling in view
+
+Add styling via bootstrap-sass
+  - add gem to gemfile
+  - create file in style sheets
+  - fill in
