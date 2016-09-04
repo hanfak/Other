@@ -45,5 +45,9 @@ Pass features test
     - rails g simple_form:install --bootstrap
   - Create field to fill in new.html
     - Plus create other parts of the form
-  - For privacy field
+  - For privacy field(drop down menu)
     - add field, fail as no method Achievements#privacy
+    - Got achievements model, and define method
+      - enum ...
+    -  To find option public_access
+      - Map the private options to options that will be seen on browser
