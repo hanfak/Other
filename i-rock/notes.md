@@ -53,3 +53,9 @@ Pass features test
       - Map the private options to options that will be seen on browser
   - For checkbox
     - create field in form
+  - For image file
+    - create fixtures folder and place image in it
+    - create field in form
+  - submit button for field
+    - just add code to new.html
+  - 
