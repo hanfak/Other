@@ -30,3 +30,5 @@ Pass features test
   - Create routes
     -   resources :achievement, only: [:new, :create]
     - only routes for stuff we need
+    - Create controller for achievements
+      - create new action
