@@ -27,3 +27,6 @@ Pass features test
     - create in layout template
     - use bootstrap template and edit
     - Add link using new_achievement_path
+  - Create routes
+    -   resources :achievement, only: [:new, :create]
+    - only routes for stuff we need
