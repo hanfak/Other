@@ -43,3 +43,7 @@ Pass features test
     - rake db:migrate
   - Use simple form (not really for pass test)
     - rails g simple_form:install --bootstrap
+  - Create field to fill in new.html
+    - Plus create other parts of the form
+  - For privacy field
+    - add field, fail as no method Achievements#privacy
