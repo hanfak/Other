@@ -34,4 +34,7 @@ Pass features test
     - create new action\
   - Create template for new
     - Now expects to find fields of form to fill in
+  - Create for for an achievement in new.html.erb
+    - define @achievement in controller, as a new Achievement (new record in db)
+    - need to create model for achievement
   - 
