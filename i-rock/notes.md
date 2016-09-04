@@ -58,4 +58,10 @@ Pass features test
     - create field in form
   - submit button for field
     - just add code to new.html
-  - 
+  - Make form submit data to controllers
+    - Create new action method
+    - Sort out what needs to rendered
+      - new achievement
+      - redirect to home, with flash message
+    - Got layout template, add flash message
+Test passed
