@@ -2,4 +2,6 @@
   <%= f.input :title  %>
   <%= f.input :description %>
   <%= f.input :privacy, collection: Hash[Achievement.privacies.map { |k,v| [ k.split('_').first.capitalize, k ]}] %>
+  <%= f.input :featured, label: 'Featured achievement' %>
+
 <% end %>

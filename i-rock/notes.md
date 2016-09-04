@@ -51,3 +51,5 @@ Pass features test
       - enum ...
     -  To find option public_access
       - Map the private options to options that will be seen on browser
+  - For checkbox
+    - create field in form
