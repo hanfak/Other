@@ -30,4 +30,35 @@ describe AchievementsController, type: :controller do
       expect(assigns(:achievement)).to eq(achievement)
     end
   end
+
+  describe 'POST create' do
+    context 'valid data' do
+      it 'redirects to achievements#show route' do
+        post :create, achievement: FactoryGirl.attributes_for(:public_achievement)
+
+        expect(response).to redirect_to(achievement_path(assigns[:achievement]))
+      end
+
+      it "creates new achievement in database" do
+        expect{
+          post :create, achievement: FactoryGirl.attributes_for(:public_achievement)
+        }.to change(Achievement, :count).by(1)
+      end
+    end
+
+    context 'invalid data' do
+      it 'renders new template' do
+        post :create, achievement: FactoryGirl.attributes_for(:public_achievement, title: '')
+
+        expect(response).to render_template(:new)
+      end
+
+      it 'does not create new achievement in database' do
+        expect{
+          post :create, achievement: FactoryGirl.attributes_for(:public_achievement, title: '')
+        }.not_to change(Achievement, :count)
+      end
+    end
+  end
+
 end
