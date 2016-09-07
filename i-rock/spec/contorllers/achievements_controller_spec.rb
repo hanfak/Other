@@ -79,4 +79,19 @@ describe AchievementsController, type: :controller do
     end
   end
 
+  describe 'GET edit' do
+    let(:achievement) {FactoryGirl.create(:public_achievement)}
+
+    it "renders :edit template" do
+      get :edit, id: achievement
+
+      expect(response).to render_template(:edit)
+    end
+
+    it "assigns the requested acievement to template" do
+      get :edit, id: achievement
+
+      expect(assigns(:achievement)).to eq(achievement)
+    end
+  end
 end
