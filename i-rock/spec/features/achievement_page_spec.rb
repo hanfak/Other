@@ -15,7 +15,7 @@ feature "Acheivement page" do
     achievement = FactoryGirl.create(:achievement, description: 'That *was* hard')
     visit("/achievements/#{achievement.id}")
 
-    expect(page).to have_content("<em>was</em>")
+    expect(page).to have_css('em', text: 'was')
     expect(page).to have_content("Achievement 1")
   end
 end
