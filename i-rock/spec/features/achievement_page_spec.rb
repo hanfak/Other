@@ -16,6 +16,6 @@ feature "Acheivement page" do
     visit("/achievements/#{achievement.id}")
 
     expect(page).to have_content("<em>was</em>")
-    # expect(page).to have_content("go to gym")
+    expect(page).to have_content("Achievement 1")
   end
 end
