@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
-    "expressworks": "^3.3.3"
+    "expressworks": "^3.3.3",
+    "jade": "^1.11.0"
   }
 }
