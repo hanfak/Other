@@ -1,22 +1,54 @@
 require 'rails_helper'
 
 describe AchievementsController, type: :controller do
-  describe 'GET index' do
-    it "renders index template" do
-       get :index
+  describe 'Guest user' do
+    describe 'GET index' do
+      it "renders index template" do
+        get :index
 
-       expect(response).to render_template(:index)
+        expect(response).to render_template(:index)
+      end
+
+      it "assigns only public achievements to template" do
+        public_achievement = FactoryGirl.create(:public_achievement)
+        private_achievement = FactoryGirl.create(:private_achievement)
+        get :index
+
+        expect(assigns(:achievements)).to match_array([public_achievement])
+        expect(assigns(:achievements)).not_to match_array([private_achievement])
+      end
     end
 
-    it "assigns only public achievements to template" do
-      public_achievement = FactoryGirl.create(:public_achievement)
-      private_achievement = FactoryGirl.create(:private_achievement)
-      get :index
+    describe 'GET show' do
+      let(:achievement) {FactoryGirl.create(:public_achievement)}
 
-      expect(assigns(:achievements)).to match_array([public_achievement])
-      expect(assigns(:achievements)).not_to match_array([private_achievement])
+      it "renders :show template" do
+        get :show, id: achievement.id
+
+        expect(response).to render_template(:show)
+      end
+
+      it "assigns requested Achievement to @achievement and template" do
+        get :show, id: achievement #works the same as above
+
+        expect(assigns(:achievement)).to eq(achievement)
+      end
+    end
+
+    describe 'GET new' do
+      it 'redirect to log in page' do
+        get :new
+        expect(response).to redirect_to(new_user_session_url)
+      end
+    end
+
+    describe 'POST create' do
+      it 'redirects to login page' do
+        post :create, achievement: FactoryGirl.attributes_for(:public_achievement)
+      end
     end
   end
+
 
   describe 'GET new' do
     # need to test response and data assignment
@@ -28,22 +60,6 @@ describe AchievementsController, type: :controller do
     it "assigns new Achievement to @achievement and template" do
       get :new
       expect(assigns(:achievement)).to be_a_new(Achievement)
-    end
-  end
-
-  describe 'GET show' do
-    let(:achievement) {FactoryGirl.create(:public_achievement)}
-
-    it "renders :show template" do
-      get :show, id: achievement.id
-
-      expect(response).to render_template(:show)
-    end
-
-    it "assigns requested Achievement to @achievement and template" do
-      get :show, id: achievement #works the same as above
-
-      expect(assigns(:achievement)).to eq(achievement)
     end
   end
 

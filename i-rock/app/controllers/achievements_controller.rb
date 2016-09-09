@@ -1,4 +1,5 @@
 class AchievementsController < ApplicationController
+  before_action :authenticate_user!, only: [ :new , :create]
   def index
     @achievements = Achievement.public_access.all
   end
