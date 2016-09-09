@@ -109,12 +109,26 @@ describe AchievementsController, type: :controller do
 
       it 'updates achievement in the database' do
         put :update, id: achievement, achievement: valid_data
-        achievement.reload
+        achievement.reload #sync db
         expect(achievement.title).to eq("New Title")
       end
     end
 
     context 'invalid data' do
+      let(:invalid_data) { FactoryGirl.attributes_for(:public_achievement, title: '') }
+
+      it 'redirects to achievements#show' do
+        put :update, id: achievement, achievement: invalid_data
+
+        expect(response).to render_template(:edit)
+      end
+
+      it 'does not updates achievement in the database' do
+        # put :update, id: achievement, achievement: valid_data
+        # achievement.reload #sync db
+        # expect(achievement.title).to eq("New Title")
+      end
+
 
     end
   end
