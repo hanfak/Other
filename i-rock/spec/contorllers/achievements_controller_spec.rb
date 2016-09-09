@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 describe AchievementsController, type: :controller do
-  describe 'Guest user' do
-    describe 'GET index' do
-      it "renders index template" do
+  shared_examples "public access to achievements" do
+    describe "GET index" do
+      it "renders :index template" do
         get :index
-
         expect(response).to render_template(:index)
       end
 
@@ -13,27 +12,28 @@ describe AchievementsController, type: :controller do
         public_achievement = FactoryGirl.create(:public_achievement)
         private_achievement = FactoryGirl.create(:private_achievement)
         get :index
-
         expect(assigns(:achievements)).to match_array([public_achievement])
         expect(assigns(:achievements)).not_to match_array([private_achievement])
       end
     end
 
-    describe 'GET show' do
-      let(:achievement) {FactoryGirl.create(:public_achievement)}
+    describe "GET show" do
+      let(:achievement) { FactoryGirl.create(:public_achievement)}
 
       it "renders :show template" do
-        get :show, id: achievement.id
-
+        get :show, id: achievement
         expect(response).to render_template(:show)
       end
 
-      it "assigns requested Achievement to @achievement and template" do
-        get :show, id: achievement #works the same as above
-
+      it "assigns requested achievement to @achievement" do
+        get :show, id: achievement
         expect(assigns(:achievement)).to eq(achievement)
       end
     end
+  end
+
+  describe 'Guest user' do
+    it_behaves_like "public access to achievements"
 
     describe 'GET new' do
       it 'redirect to log in page' do
@@ -82,38 +82,7 @@ describe AchievementsController, type: :controller do
       sign_in(user)
     end
 
-    describe 'GET index' do
-      it "renders index template" do
-        get :index
-
-        expect(response).to render_template(:index)
-      end
-
-      it "assigns only public achievements to template" do
-        public_achievement = FactoryGirl.create(:public_achievement)
-        private_achievement = FactoryGirl.create(:private_achievement)
-        get :index
-
-        expect(assigns(:achievements)).to match_array([public_achievement])
-        expect(assigns(:achievements)).not_to match_array([private_achievement])
-      end
-    end
-
-    describe 'GET show' do
-      let(:achievement) {FactoryGirl.create(:public_achievement)}
-
-      it "renders :show template" do
-        get :show, id: achievement.id
-
-        expect(response).to render_template(:show)
-      end
-
-      it "assigns requested Achievement to @achievement and template" do
-        get :show, id: achievement #works the same as above
-
-        expect(assigns(:achievement)).to eq(achievement)
-      end
-    end
+    it_behaves_like "public access to achievements"
 
     describe 'GET new' do
         # need to test response and data assignment
