@@ -125,11 +125,20 @@ describe AchievementsController, type: :controller do
 
       it 'does not updates achievement in the database' do
         put :update, id: achievement, achievement: invalid_data
+        achievement.reload
 
         expect(achievement.description).not_to eq("New")
       end
+    end
 
+    describe 'DELETE destroy' do
+      let(:achievement) {FactoryGirl.create(:public_achievement)}
 
+      it 'redirects to achievements#index' do
+        delete :destroy, id: achievement
+
+        expect(response).to redirect_to(achievements_path)
+      end
     end
   end
 end
