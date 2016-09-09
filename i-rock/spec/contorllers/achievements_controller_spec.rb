@@ -45,6 +45,32 @@ describe AchievementsController, type: :controller do
     describe 'POST create' do
       it 'redirects to login page' do
         post :create, achievement: FactoryGirl.attributes_for(:public_achievement)
+
+        expect(response).to redirect_to(new_user_session_url)
+      end
+    end
+
+    describe 'GET edit' do
+      it 'redirects to login page' do
+        get :edit, id: FactoryGirl.create(:public_achievement)
+
+        expect(response).to redirect_to(new_user_session_url)
+      end
+    end
+
+    describe 'PUT uppdate' do
+      it 'redirect to login page' do
+        put :update, id: FactoryGirl.create(:public_achievement), achievement: FactoryGirl.attributes_for(:public_achievement)
+
+        expect(response).to redirect_to(new_user_session_url)
+      end
+    end
+
+    describe 'DELETE destroy' do
+      it 'redirects to login page' do
+        delete :destroy, id: FactoryGirl.create(:public_achievement)
+
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
   end
