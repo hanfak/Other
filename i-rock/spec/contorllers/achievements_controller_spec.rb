@@ -139,6 +139,12 @@ describe AchievementsController, type: :controller do
 
         expect(response).to redirect_to(achievements_path)
       end
+
+      it 'deletes achievement from databas' do
+        delete :destroy, id: achievement
+
+        expect(Achievement.exists?(achievement.id)).to be_falsy
+      end
     end
   end
 end
