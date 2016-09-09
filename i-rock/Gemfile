@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'redcarpet'
+gem 'devise'
 
 gem 'simple_form'
 gem 'web-console', '~> 2.0', group: :development
