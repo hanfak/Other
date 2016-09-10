@@ -1,7 +1,10 @@
-contactListApp.controller('AppCtrl', ['$scope','$http', 'serviceList', function($scope, $http, serviceList) {
+contactListApp.controller('AppCtrl', ['$scope', 'serviceList', function($scope, serviceList) {
   console.log('hello from controller');
 
-  // $scope.contactList = service.getAll();
+  serviceList.getAll().then(function(response) {
+    $scope.contactList = response.data;
+  });
+
 
   // $http.get('/file')
   //   .success(function(response) {
