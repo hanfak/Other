@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var fs = require("fs");
 
 var person1 = {
   name: 'person 1 name',
@@ -26,6 +27,12 @@ app.use(express.static(__dirname + "/public"));
 app.get('/contactList', function(req,res) {
   console.log('Received GET request');
   res.json(contactList);
+});
+
+app.get('/file', function(req, res) {
+  var contents = fs.readFileSync("foo.txt");
+  var jsonContent = JSON.parse(contents);
+  res.json(jsonContent);
 });
 
 app.listen(3000);
