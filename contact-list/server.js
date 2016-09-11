@@ -1,6 +1,9 @@
 var express = require('express');
+var mongoose  = require("./db/connection");
 var app = express();
 var fs = require("fs");
+
+var Contact = mongoose.model("Contact");
 
 var person1 = {
   name: 'person 1 name',
@@ -24,7 +27,7 @@ var contactList = [person1, person2, person3];
 
 app.use(express.static(__dirname + "/public"));
 
-app.get('/contactList', function(req,res) {
+app.get('/var', function(req,res) {
   console.log('Received GET request');
   res.json(contactList);
 });
@@ -33,6 +36,13 @@ app.get('/file', function(req, res) {
   var contents = fs.readFileSync("foo.txt");
   var jsonContent = JSON.parse(contents);
   res.json(jsonContent);
+});
+
+app.get('/db', function(req, res) {
+  Contact.find().then(function(contacts){
+    console.log(contacts);
+    res.json(contacts);
+  });
 });
 
 app.listen(3000);
