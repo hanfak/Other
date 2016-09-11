@@ -22,8 +22,15 @@ RSpec.describe Achievement, type: :model do
       FactoryGirl.create(:public_achievement, title: 'First Achievement', user: user1)
       new_achievement = Achievement.new(title: 'First Achievement', user: user2)
 
-      expect(new_achievement.valid?).to be_truthy 
+      expect(new_achievement.valid?).to be_truthy
 
     end
+  end
+
+  it 'must belong to user' do
+    some_achievement = Achievement.new(title: 'some title', user: nil)
+
+    expect(some_achievement.valid?).to be_falsy
+
   end
 end
