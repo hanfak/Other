@@ -19,4 +19,12 @@ RSpec.describe Achievement, type: :model do
     achievement = Achievement.new(title: "New Achievement", user: FactoryGirl.create(:user, email: 'test@test.com'))
     expect(achievement.silly_title).to eq('New Achievement by test@test.com')
   end
+
+  it 'only fetches achievements which title starts from provided letter' do
+    user = FactoryGirl.create(:user)
+    achievement1 = FactoryGirl.create(:public_achievement, title: 'Read a book', user: user)
+    achievement2 = FactoryGirl.create(:public_achievement, title: 'Passed an exam', user: user)
+    expect(Achievement.by_letter("R")).to eq([achievement1])
+    # expect(Achievement.by_letter("R")).not_to include(achievement2)
+  end
 end

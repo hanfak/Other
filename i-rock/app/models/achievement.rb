@@ -17,4 +17,8 @@ class Achievement < ActiveRecord::Base
   def silly_title
     "#{title} by #{user.email}"
   end
+
+  def self.by_letter(letter)
+    where("title LIKE ?", "#{letter}%")
+  end
 end
