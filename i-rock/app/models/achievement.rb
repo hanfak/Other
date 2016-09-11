@@ -13,4 +13,8 @@ class Achievement < ActiveRecord::Base
   def description_html
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(description).html_safe
   end
+
+  def silly_title
+    "#{title} by #{user.email}"
+  end
 end

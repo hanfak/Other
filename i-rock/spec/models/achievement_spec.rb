@@ -14,4 +14,9 @@ RSpec.describe Achievement, type: :model do
     expect(achievement.description_html).to include('<strong>thing</strong>')
     expect(achievement.description_html).to include('<em>actually</em>')
   end
+
+  it 'has silly title' do
+    achievement = Achievement.new(title: "New Achievement", user: FactoryGirl.create(:user, email: 'test@test.com'))
+    expect(achievement.silly_title).to eq('New Achievement by test@test.com')
+  end
 end
