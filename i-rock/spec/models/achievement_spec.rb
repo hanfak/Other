@@ -31,6 +31,12 @@ RSpec.describe Achievement, type: :model do
     some_achievement = Achievement.new(title: 'some title', user: nil)
 
     expect(some_achievement.valid?).to be_falsy
+  end
 
+  it 'has belongs_to user assoication' do
+    user = FactoryGirl.create(:user)
+    achievement = FactoryGirl.create(:public_achievement, user: user)
+
+    expect(achievement.user).to eq(user)
   end
 end
