@@ -23,11 +23,13 @@
         </thead>
         <tbody>
           <tr>
-            <td></td>
-            <td><input class='form-control' ng-model="contact.name"></td>
-            <td><input class='form-control' ng-model="contact.email"></td>
-            <td><input class='form-control' ng-model="contact.number"></td>
-            <td><button class="btn btn-primary" ng-click="addContact()">ADD</button></td>
+            <form ng-submit="addContact()">
+              <td></td>
+              <td><input class='form-control' ng-model="contact.name"></td>
+              <td><input class='form-control' ng-model="contact.email"></td>
+              <td><input class='form-control' ng-model="contact.number"></td>
+              <td><button class="btn btn-primary" >ADD</button></td>
+            </form>
           </tr>
           <tr ng-repeat="contact in contactList">
             <td>{{contact._id}}</td>
