@@ -3,20 +3,14 @@ class Achievement < ActiveRecord::Base
 
   validates :title, presence: true
   validates :user, presence: true
-  validate :unique_title_for_one_user
+  validates :title, uniqueness: {
+    scope: :user_id,
+    message: "you cannot have two achievements with same title"
+  }
 
   enum privacy: [:public_access, :private_access, :friends_access]
 
   def description_html
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(description).html_safe
   end
-
-  private
-
-    def unique_title_for_one_user
-      existing_achievement = Achievement.find_by(title: title)
-      if existing_achievement && existing_achievement.user == user
-        errors.add(:title, "you cannot have two achievements with same title")
-      end
-    end
 end
