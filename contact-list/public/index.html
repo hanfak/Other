@@ -14,18 +14,26 @@
       <table class='table'>
         <thead>
           <tr>
+            <th>id</th>
             <th>Name</th>
             <th>email</th>
             <th>number</th>
-            <th>id</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td></td>
+            <td><input class='form-control' ng-model="contact.name"></td>
+            <td><input class='form-control' ng-model="contact.email"></td>
+            <td><input class='form-control' ng-model="contact.number"></td>
+            <td><button class="btn btn-primary" ng-click="addContact()">ADD</button></td>
+          </tr>
           <tr ng-repeat="contact in contactList">
+            <td>{{contact._id}}</td>
             <td>{{contact.name}}</td>
             <td>{{contact.email}}</td>
             <td>{{contact.number}}</td>
-            <td>{{contact._id}}</td>
           </tr>
         </tbody>
       </table>

@@ -1,5 +1,7 @@
 var express = require('express');
 var mongoose  = require("./db/connection");
+var bodyParser = require('body-parser');
+
 var app = express();
 var fs = require("fs");
 
@@ -26,6 +28,8 @@ var person3 = {
 var contactList = [person1, person2, person3];
 
 app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.json());
+
 
 app.get('/var', function(req,res) {
   console.log('Received GET request');
@@ -42,6 +46,13 @@ app.get('/db', function(req, res) {
   Contact.find().then(function(contacts){
     console.log(contacts);
     res.json(contacts);
+  });
+});
+
+app.post('/db', function(req, res){
+  console.log('where is th contact ' + req.body);
+  Contact.create(req.body).then(function(one_contact){
+    res.json(one_contact);
   });
 });
 
