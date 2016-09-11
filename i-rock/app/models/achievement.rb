@@ -19,6 +19,6 @@ class Achievement < ActiveRecord::Base
   end
 
   def self.by_letter(letter)
-    where("title LIKE ?", "#{letter}%")
+    includes(:user).where("title LIKE ?", "#{letter}%").order("users.email")
   end
 end

@@ -25,6 +25,14 @@ RSpec.describe Achievement, type: :model do
     achievement1 = FactoryGirl.create(:public_achievement, title: 'Read a book', user: user)
     achievement2 = FactoryGirl.create(:public_achievement, title: 'Passed an exam', user: user)
     expect(Achievement.by_letter("R")).to eq([achievement1])
-    # expect(Achievement.by_letter("R")).not_to include(achievement2)
+    expect(Achievement.by_letter("R")).not_to include(achievement2)
+  end
+
+  it 'sorts achievements by user emails' do
+    albert = FactoryGirl.create(:user, email: 'albert@email.com')
+    rob = FactoryGirl.create(:user, email: 'rob@email.com')
+    achievement1 = FactoryGirl.create(:public_achievement, title: 'Read a book', user: rob)
+    achievement2 = FactoryGirl.create(:public_achievement, title: 'Rocked it', user: albert)
+    expect(Achievement.by_letter("R")).to eq([achievement2, achievement1])
   end
 end
