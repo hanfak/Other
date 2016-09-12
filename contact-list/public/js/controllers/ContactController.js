@@ -15,4 +15,8 @@ contactListApp.controller('AppCtrl', ['$scope', 'serviceList', function($scope, 
     console.log($scope.contact);
     serviceList.postContact($scope.contact).then(refresh);
   };
+
+  $scope.removeContact = function(id) {
+    console.log(id);
+  };
 }]);
