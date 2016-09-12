@@ -15,5 +15,11 @@
     "mongoose": "^4.5.10",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "description": "https://thinkster.io/mean-stack-tutorial",
+  "main": "app.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
