@@ -46,6 +46,9 @@ contactListApp.service('serviceList', ['$http', function($http) {
     return $http.put('/db/' + id, contact)
       .then(function(response){
         console.log('put from service ' + response);
+      },
+      function(error) {
+        console.error('Repos error', error.status, error.data);
       });
   };
 }]);

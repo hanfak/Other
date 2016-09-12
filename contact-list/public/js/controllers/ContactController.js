@@ -34,4 +34,9 @@ contactListApp.controller('AppCtrl', ['$scope', 'serviceList','$http', function(
     serviceList.updateContact($scope.contact._id, $scope.contact)
       .then(refresh);
   };
+
+  $scope.clearInput = function() {
+    console.log($scope.contact._id);
+    $scope.contact = "";
+  };
 }]);

@@ -30,9 +30,11 @@
               <td><input class='form-control' ng-model="contact.number"></td>
               <td>
                 <button class="btn btn-primary">ADD / UPDATE</button>
-              </td>
 
+              </td>
             </form>
+              <td><button class="btn btn-info" ng-click='clearInput()'>CLEAR</button></td>
+
           </tr>
           <tr ng-repeat="contact in contactList">
             <td ng-click='editContact(contact._id)'>{{contact._id}}</td>
