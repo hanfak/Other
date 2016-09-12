@@ -20,4 +20,12 @@ contactListApp.controller('AppCtrl', ['$scope', 'serviceList','$http', function(
     console.log(id);
     serviceList.removeContact(id).then(refresh);
   };
+
+  $scope.editContact = function(id) {
+	console.log(id);
+	$http.get('/db/' + id).success(function(response) {
+    console.log(response);
+		$scope.contact = response;
+	});
+};
 }]);

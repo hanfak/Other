@@ -41,25 +41,34 @@ app.get('/file', function(req, res) {
   var jsonContent = JSON.parse(contents);
   res.json(jsonContent);
 });
-
+//READ ALL
 app.get('/db', function(req, res) {
   Contact.find().then(function(contacts){
     console.log(contacts);
     res.json(contacts);
   });
 });
-
+// CREATE
 app.post('/db', function(req, res){
   console.log('where is th contact ' + req.body);
   Contact.create(req.body).then(function(one_contact){
     res.json(one_contact);
   });
 });
-
+// DELETE
 app.delete('/db/:id', function(req, res){
   console.log('where is the contact ' + req.params.id);
   Contact.findByIdAndRemove(req.params.id).then(function(){
     res.json({success: true});
+  });
+});
+// GET ONE
+app.get('/db/:id', function (req, res) {
+	var id = req.params.id;
+	console.log('get one ' + id);
+  Contact.findById(id).then(function(contact){
+    console.log('returned product from db ' + contact);
+    res.json(contact);
   });
 });
 
