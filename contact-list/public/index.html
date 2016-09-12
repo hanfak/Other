@@ -24,11 +24,14 @@
         <tbody>
           <tr>
             <form ng-submit="addContact()">
-              <td></td>
+              <td>&nbsp;</td>
               <td><input class='form-control' ng-model="contact.name"></td>
               <td><input class='form-control' ng-model="contact.email"></td>
               <td><input class='form-control' ng-model="contact.number"></td>
-              <td><button class="btn btn-primary" >ADD</button></td>
+              <td>
+                <button class="btn btn-primary">ADD</button>
+                <button class="btn btn-primary" ng-click="update()">UPDATE</button>
+              </td>
             </form>
           </tr>
           <tr ng-repeat="contact in contactList">
@@ -38,7 +41,7 @@
             <td>{{contact.number}}</td>
             <td>
               <button class='btn btn-danger' ng-click='removeContact(contact._id)'>REMOVE</button>
-              <button class='btn btn-warning' ng-click='updateContact(contact._id)'>EDIT</button>
+              <button class='btn btn-warning' ng-click='editContact()'>EDIT</button>
             </td>
           </tr>
         </tbody>
