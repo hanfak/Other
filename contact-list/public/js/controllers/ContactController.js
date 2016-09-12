@@ -18,9 +18,6 @@ contactListApp.controller('AppCtrl', ['$scope', 'serviceList','$http', function(
 
   $scope.removeContact = function(id) {
     console.log(id);
-    $http.delete("/db/" + id)
-      .then(function(response){
-        console.log(response);
-      }).then(refresh);
+    serviceList.removeContact(id).then(refresh);
   };
 }]);

@@ -18,4 +18,11 @@ contactListApp.service('serviceList', ['$http', function($http) {
       console.log(response);
     });
   };
+
+  this.removeContact = function(id){
+    return $http.delete("/db/" + id)
+      .then(function(response){
+        console.log(response);
+      });
+  };
 }]);
