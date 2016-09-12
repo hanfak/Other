@@ -41,4 +41,11 @@ contactListApp.service('serviceList', ['$http', function($http) {
         console.error('Repos error', error.status, error.data);
       });
   };
+
+  this.updateContact = function(id, contact){
+    return $http.put('/db/' + id, contact)
+      .then(function(response){
+        console.log('put from service ' + response);
+      });
+  };
 }]);

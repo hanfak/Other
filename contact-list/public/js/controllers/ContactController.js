@@ -26,14 +26,12 @@ contactListApp.controller('AppCtrl', ['$scope', 'serviceList','$http', function(
   	serviceList.editContact(id).then(function(response){
       console.log('cont ' + response.data);
       $scope.contact = response.data;
-  });
+    });
+  };
 
   $scope.updateContact = function() {
     console.log($scope.contact._id);
-    $http.put('/db/' + $scope.contact._id, $scope.contact).then(function(response){
-      console.log(response);
-      refresh();
-    });
+    serviceList.updateContact($scope.contact._id, $scope.contact)
+      .then(refresh);
   };
-};
 }]);
