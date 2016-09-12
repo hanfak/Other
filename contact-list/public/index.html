@@ -33,10 +33,10 @@
             </td>
           </tr>
           <tr ng-repeat="contact in contactList">
-            <td>{{contact._id}}</td>
-            <td>{{contact.name}}</td>
-            <td>{{contact.email}}</td>
-            <td>{{contact.number}}</td>
+            <td ng-click='editContact(contact._id)'>{{contact._id}}</td>
+            <td ng-click='editContact(contact._id)'>{{contact.name}}</td>
+            <td ng-click='editContact(contact._id)'>{{contact.email}}</td>
+            <td ng-click='editContact(contact._id)'>{{contact.number}}</td>
             <td>
               <button class='btn btn-danger' ng-click='removeContact(contact._id)'>REMOVE</button>
               <button class='btn btn-warning' ng-click='editContact(contact._id)'>EDIT</button>

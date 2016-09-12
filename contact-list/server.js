@@ -73,7 +73,7 @@ app.get('/db/:id', function (req, res) {
 });
 //PUT
 app.put('/db/:id', function(req,res){
-  Contact.findByIdAndUpdate(req.params.id, req.body).then(function(contact){
+  Contact.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(function(contact){
     console.log('ALLA CONTACTS' + Contact.find().then(function(contacts){return contacts;}));
     res.json(contact);
   });
