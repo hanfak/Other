@@ -71,6 +71,13 @@ app.get('/db/:id', function (req, res) {
     res.json(contact);
   });
 });
+//PUT
+app.put('/db/:id', function(req,res){
+  Contact.findByIdAndUpdate(req.params.id, req.body).then(function(contact){
+    console.log('ALLA CONTACTS' + Contact.find().then(function(contacts){return contacts;}));
+    res.json(contact);
+  });
+});
 
 app.listen(3000);
 console.log('server running');

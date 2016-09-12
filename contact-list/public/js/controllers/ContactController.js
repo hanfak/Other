@@ -30,7 +30,10 @@ contactListApp.controller('AppCtrl', ['$scope', 'serviceList','$http', function(
 
   $scope.updateContact = function() {
     console.log($scope.contact._id);
-    $http.put('/db/' + $scope.contact._id, $scope.contact);
+    $http.put('/db/' + $scope.contact._id, $scope.contact).then(function(response){
+      console.log(response);
+      refresh();
+    });
   };
 };
 }]);
