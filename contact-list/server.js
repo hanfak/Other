@@ -56,5 +56,12 @@ app.post('/db', function(req, res){
   });
 });
 
+app.delete('/db/:id', function(req, res){
+  console.log('where is the contact ' + req.params.id);
+  Contact.findByIdAndRemove(req.params.id).then(function(){
+    res.json({success: true});
+  });
+});
+
 app.listen(3000);
 console.log('server running');

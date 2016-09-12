@@ -1,4 +1,4 @@
-contactListApp.controller('AppCtrl', ['$scope', 'serviceList', function($scope, serviceList) {
+contactListApp.controller('AppCtrl', ['$scope', 'serviceList','$http', function($scope, serviceList,$http) {
   console.log('hello from controller');
 
 
@@ -20,7 +20,7 @@ contactListApp.controller('AppCtrl', ['$scope', 'serviceList', function($scope, 
     console.log(id);
     $http.delete("/db/" + id)
       .then(function(response){
-        console.log(response);})
-      .then(refresh);
+        console.log(response);
+      }).then(refresh);
   };
 }]);
