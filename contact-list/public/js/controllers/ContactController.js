@@ -22,10 +22,14 @@ contactListApp.controller('AppCtrl', ['$scope', 'serviceList','$http', function(
   };
 
   $scope.editContact = function(id) {
-	console.log(id);
-	$http.get('/db/' + id).success(function(response) {
-    console.log(response);
-		$scope.contact = response;
-	});
+  	console.log(id);
+  	serviceList.editContact(id).then(function(response){
+      console.log('cont ' + response.data);
+      $scope.contact = response.data;
+  });
+
+  $scope.updateContact = function() {
+    console.log($scope.contact._id);
+  };
 };
 }]);
