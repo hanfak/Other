@@ -11,6 +11,7 @@ class AchievementsController < ApplicationController
 
   def create
     @achievement = Achievement.new(achievement_params)
+    @achievement.user = current_user
     if @achievement.save
       redirect_to achievement_url(@achievement.id), notice: 'Achievement has been created'
     else
